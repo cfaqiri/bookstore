@@ -38,7 +38,6 @@ describe 'Books API', type: :request do
       
       expect(response).to have_http_status(:success)
       expect(response_body.size).to eq(1)
-      
       expect(response_body).to eq(
         [
           {
@@ -46,6 +45,23 @@ describe 'Books API', type: :request do
             'title' => 'Time Machine',
             'author_name' => 'George Orwell',
             'author_age' => 46
+          }
+        ]
+      )
+    end
+    
+    it 'returns a subset of books based on limit and offset' do
+      get '/api/v1/books', params: { limit: 1, offset: 1 }
+
+      expect(response).to have_http_status(:success)
+      expect(response_body.size).to eq(1)
+      expect(response_body).to eq(
+        [
+          {
+            'id' => 2,
+            'title' => 'Yo yo',
+            'author_name' => 'Harry Wells',
+            'author_age' => 98
           }
         ]
       )
