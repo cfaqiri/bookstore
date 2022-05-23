@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :books, only: [:index, :create, :destroy]
+      resources :books, only: %i[index create destroy]
 
-      post 'authenticate', to: 'authentication#create'
+      post "authenticate", to: "authentication#create"
     end
   end
 end
