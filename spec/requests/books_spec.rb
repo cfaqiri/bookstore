@@ -90,7 +90,7 @@ describe "Books API", type: :request do
                  last_name: "Weir",
                  age: "67"
                }
-             }
+             }, headers: { "Authorization" => "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSJ9.M1vu6qDej7HzuSxcfbE6KAMekNUXB3EWtxwS0pg4UGg" }
       }.to change { Book.count }.from(0).to(1)
 
       expect(response).to have_http_status(:created)
